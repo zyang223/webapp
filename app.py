@@ -19,7 +19,7 @@ def nearest():
             return render_template("oops.html")
 
 
-@app.get('/temp/')
+@app.get('/temp/') # using the post method to do the weather section
 def temp_get():
     return render_template('weather-form.html')
 
@@ -28,7 +28,10 @@ def temp_get():
 def temp_post():
     city_name = request.form['city']
     temperature = get_temp(city_name)
-    return render_template('weather-result.html', city=city_name, temp=temperature)
+    summary, url = get_city_intro(city_name)
+    return render_template('weather-result.html', city=city_name, temp=temperature, city_url=url, city_summary=summary)
+
+
 
 
 if __name__ == '__main__':

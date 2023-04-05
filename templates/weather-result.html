@@ -49,6 +49,26 @@
             margin-bottom: 20px;
             text-align: center;
         }
+        .city-summary {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #d4ac0d;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .city-summary-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .city-summary-text {
+            font-size: 16px;
+            color: #2c3e50;
+            line-height: 1.5;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
         .credits {
             text-align: center;
             font-size: 16px;
@@ -64,9 +84,12 @@
         <div class="city-name">{{ city }}</div>
         <div class="temperature">{{ temp }}<span class="degree-sign">&deg;</span></div>
         <div class="description">Current temperature</div>
+        <div class="city-summary">
+            <div class="city-summary-header">About {{ city }}</div>
+            <div class="city-summary-text">{{ city_summary }}</div>
+        </div>
+        <div class="city-info">
+            <a href="{{ city_url }}" target="_blank">Learn more about {{ city }}</a>
+        </div>
     </div>
-    <div class="credits">Weather data provided by <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a></div>
-</body>
-
-</html>
-
+    <div class="credits">Weather data provided by <a href="https://openweathermap

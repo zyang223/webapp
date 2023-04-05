@@ -13,6 +13,7 @@ import json
 from pprint import pprint
 import urllib.parse
 import requests #pip install requests
+import wikipediaapi # pip install for city introduction
 
 def get_json(url: str) -> dict:
     """
@@ -131,6 +132,18 @@ def find_stop_near(place_name: str) -> tuple[str, bool]:
     return station_name, wheelchair_accessible,description
 
 
+def get_city_intro(city_name):
+    # Initialize the Wikipedia API
+    wiki = wikipediaapi.Wikipedia('en')
+
+    # Retrieve the page for the given city
+    page = wiki.page(city_name)
+
+    # Extract the summary and URL of the city's Wikipedia page
+    summary = page.summary
+    url = page.fullurl
+
+    return summary, url
 
 
 def main():
@@ -167,7 +180,8 @@ def main():
         print(f"The nearest station from {place_name} is {station_name} ({description}) and it is wheelchair accessible.")
     else:
         print(f"The nearest station from {place_name} is {station_name} ({description}) and it is not wheelchair accessible.")
-
+    ############################################
+    print(get_city_intro("boston"))
  
 if __name__ == '__main__':
     main()
