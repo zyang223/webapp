@@ -32,6 +32,7 @@
         color: #555;
         font-size: 24px;
         text-align: center;
+        margin-bottom: 20px;
       }
       .result-desc b {
         font-weight: bold;
@@ -66,9 +67,11 @@
     <p>Here is the nearest MBTA stop to the address you entered:</p>
     <div class="result-container">
       <p class="result">{{ station_name }}</p>
-      <p class="result-desc">The nearest MBTA stop to {{ address }} is {{ station_name }}, and it is <b>{{ "wheelchair accessible" if wheelchair_accessible else "not wheelchair accessible" }}</b>.</p>
+      <p class="result-desc">The nearest MBTA stop to {{ address }} is <b>{{ station_name }}</b> ({{ description }}), and it is <b>{{ "wheelchair accessible" if wheelchair_accessible else "not wheelchair accessible" }}</b>.</p>
       <button onclick="window.location.href='/welcome/'">Search Again</button>
     </div>
     <img src="{{ url_for('static', filename='congrats.png') }}" alt="Profile Picture">
   </body>
 </html>
+
+

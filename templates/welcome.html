@@ -52,12 +52,16 @@
     <div class="image-container">
       <img src="{{ url_for('static', filename='mbta_map.png') }}" alt="MBTA Map">
     </div>
-    <h1>Welcome to mbta_helper!</h1>
+    <h1>Welcome to mbta_helperin Boston Area!</h1>
     <p>Use this page to plan your MBTA trips and get weather conditions of the area.</p>
     <form action="{{ url_for('nearest') }}" method="get">
       <label for="address">Enter your address:</label>
       <input type="text" name="address" id="address" required>
       <button type="submit">Find nearest MBTA stop</button>
     </form>
+    {% if station_name %}
+      <p>The nearest MBTA station to {{ address }} is <strong>{{ station_name }}</strong> (<strong>{{ description }}</strong>).{% if wheelchair_accessible %} It is wheelchair accessible.{% else %} It is not wheelchair accessible.{% endif %}</p>
+    {% endif %}
   </body>
 </html>
+

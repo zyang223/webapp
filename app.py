@@ -12,7 +12,7 @@ def welcome_page():
 def nearest():
     address = request.args.get('address')
     latitude, longitude = get_lat_long(address)
-    stop_name, wheelchair_accessible,description = get_nearest_station(latitude, longitude)
+    stop_name, wheelchair_accessible, description = get_nearest_station(latitude, longitude)
     if stop_name:
             return render_template("station_result.html", station_name=stop_name, address=address, wheelchair_accessible=wheelchair_accessible,description=description)
     else:
