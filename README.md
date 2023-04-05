@@ -7,7 +7,7 @@ I will split the Reflection part into three paragraphs: difficulties, innovation
 
 **Difficulties**
 Throughout the project, I encountered several difficulties that cost me a lot of time to solve. One of the major difficulties was understanding the "Get" and "`post`" methods, which I needed to read extra materials to understand. At first, I was not consistent with the "Get" and "`post`" methods in the HTML document and 'app.py' file. I was thinking that we could get the information from the welcome page and `post` the result from the station result. However, I wrote two `post`s, which caused errors.
-![dif1](static\diff1.png)
+![dif1](static/diff1.png)
 
 Eventually, I figured out a solution to use both pages. However, I still find it challenging to understand the concept of the "Get" and "`post`" methods. I finally understood the difference between them through Professor Li’s demo and the explanation in the class. The "`post`" method sends the data to the server in the request body, which is typically encrypted. It does not expose the data in the URL, making it more secure. On the other hand, the "Get" method is used to retrieve the resource that was stored in the URL. The query parameters are appended to the URL, and the data is visible in the URL. In other words, if we want to send longer and more secure data to the server, we would prefer to use "`post`," but if we are using a similar approach like searching the information from Google, we could use the "Get" method.
 
