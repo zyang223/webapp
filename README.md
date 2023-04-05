@@ -10,9 +10,13 @@ Throughout the project, I encountered several difficulties that cost me a lot of
 ![dif1](static\diff1.png)
 
 Eventually, I figured out a solution to use both pages. However, I still find it challenging to understand the concept of the "Get" and "`post`" methods. I finally understood the difference between them through Professor Li’s demo and the explanation in the class. The "`post`" method sends the data to the server in the request body, which is typically encrypted. It does not expose the data in the URL, making it more secure. On the other hand, the "Get" method is used to retrieve the resource that was stored in the URL. The query parameters are appended to the URL, and the data is visible in the URL. In other words, if we want to send longer and more secure data to the server, we would prefer to use "`post`," but if we are using a similar approach like searching the information from Google, we could use the "Get" method.
-![dif2](static/diff2.png)
+
+
 
 Another difficulty was including the information of the bus lines or stations in the search welcome page. However, I found out that most of the bus lines or stations are represented by an ID in the dictionary, which provided no more information or detailed description of the MBTA station. Additionally, I encountered a problem when switching between the bus and the MBTA station. I tried to use a radio to create a button for both options, but I had a problem redirecting the page, and I had coding problems with the bus section. Due to time constraints, I may continue to improve this section in the future.
+
+![dis2](static/diff2.png)
+
 
 **Innovations and Wow Factor**
 I included both the "Get" and "`post`" methods in my project, with the "Get" method retrieving the information for the MBTA station and the "`post`" method retrieving the information on the weather. I also decorated my HTML template by myself, changing the font, color, background, and writing text descriptions. With assistance from ChatGPT, I adjusted the alignment and design of the UI of the webpage. Additionally, I downloaded the Wikipedia package from Python to introduce a brief summary of the city searched and included the Wikipedia URL of the city in the weather result page. Overall I really enjoyed the innovation process and I have learned a lot of knowledge on HTML script and found interest in designing UI for the web page
