@@ -86,7 +86,7 @@ def get_nearest_station(latitude: str, longitude: str) -> tuple[str, bool]:
         print("Sorry, there is no MBTA station near the given coordinates.")
 
 
-#Input Area################################
+#Future improve Area################################
 # def get_nearby_bus_stops(latitude: str, longitude: str) -> List[Tuple[str, str]]:
 #     """
 #     Given latitude and longitude strings, return a list of tuples containing the stop name and URL for all nearby bus stops to the given coordinates.
