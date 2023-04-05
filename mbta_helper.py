@@ -12,6 +12,7 @@ import urllib.request
 import json
 from pprint import pprint
 import urllib.parse
+import requests #pip install requests
 
 def get_json(url: str) -> dict:
     """
@@ -78,13 +79,38 @@ def get_nearest_station(latitude: str, longitude: str) -> tuple[str, bool]:
     if len(response_data["data"]) >0:    # add an if statement to check if the station exist or not for a clear purpose
         station_name = response_data["data"][0]["attributes"]["name"] 
         wheelchair_accessible = response_data["data"][0]["attributes"]["wheelchair_boarding"] == 1
-        return station_name, wheelchair_accessible
+        description=response_data["data"][0]["attributes"]["description"]
+        return station_name, wheelchair_accessible,description
     else:
         print("Sorry, there is no MBTA station near the given coordinates.")
 
+
 #Input Area################################
+# def get_nearby_bus_stops(latitude: str, longitude: str) -> List[Tuple[str, str]]:
+#     """
+#     Given latitude and longitude strings, return a list of tuples containing the stop name and URL for all nearby bus stops to the given coordinates.
 
+#     See https://api-v3.mbta.com/docs/swagger/index.html#/Stop/ApiWeb_StopController_index for URL formatting requirements for the 'GET /stops' API.
+#     """
+#     api_key = "be09a127f60444dd989e786c5e2f4e39"
+#     MBTA_BASE_URL = "https://api-v3.mbta.com/stops"
+#     url = f"{MBTA_BASE_URL}?sort=distance&filter[latitude]={latitude}&filter[longitude]={longitude}&api_key={api_key}"
 
+#     with urllib.request.urlopen(url) as f:
+#         response_text = f.read().decode('utf-8')
+
+#     response_data = json.loads(response_text)
+#     stops = []
+#     for stop in response_data['data']:
+#         stop_id = stop['id']
+#         stop_name = stop_id.split(':')[-1] # Extract the stop name from the ID
+#         stop_url = f"{MBTA_BASE_URL}/{stop_id}"
+#         stops.append((stop_name, stop_url))
+#     return stops
+
+# latitude="42.3358655"
+# longitude="-71.1694295"
+# print(get_nearby_bus_stops(latitude,longitude))
 ############################################
 
 
@@ -97,12 +123,12 @@ def find_stop_near(place_name: str) -> tuple[str, bool]:
     place_name=place_name.replace(" ","%20") # take out the space
     latitude,longitude=get_lat_long(place_name)
     print(f"The target place name is{place_name}, latitude is{latitude},longitude={longitude}")
-    station_name, wheelchair_accessible=get_nearest_station(latitude,longitude)
+    station_name, wheelchair_accessible,description=get_nearest_station(latitude,longitude)
     if station_name:
         pass
     else:     
         print("Sorry, there is no MBTA station near the given coordinates.")
-    return station_name, wheelchair_accessible
+    return station_name, wheelchair_accessible,description
 
 
 
@@ -119,29 +145,29 @@ def main():
     print(get_url("Cambridge"))
     ####################################################################################################
     """Get Longitude and Latitude"""
-    place_name="Babson"
+    place_name="Boston College"
     latitude, longitude = get_lat_long(place_name)
     place_new_name = urllib.parse.unquote(place_name)#(return the space)
     print(f"The latitude and longitude of {place_new_name} are: {latitude}, {longitude}")
     #######################################################################################################
     """GET STATION AND WHEEL CHAIR"""
-    latitude="42.3598"
-    longitude="-71.0921"
-    station_name, wheelchair_accessible = get_nearest_station(latitude,longitude)
+    latitude="42.3358655"
+    longitude="-71.1694295"
+    station_name, wheelchair_accessible,description = get_nearest_station(latitude,longitude)
     if wheelchair_accessible:
-        print(f"The nearest station from the map is {station_name} and it is wheelchair accessible.")
+        print(f"The nearest station from the map is {station_name}({description}) and it is wheelchair accessible.")
     else:
-        print(f"The nearest station from the map is {station_name} and it is not wheelchair accessible.")
+        print(f"The nearest station from the map is {station_name}({description}) and it is not wheelchair accessible.")
     ################################################################################################################
     """USE PLACE NAME TO GET LON AND LAT, STATION AND WHEELCHAIR"""
-    place_name="TD Garden"
-    station_name,wheelchair_accessible=(find_stop_near(place_name))
+    place_name="Boston College"
+    station_name,wheelchair_accessible,description=(find_stop_near(place_name))
     place_name=place_name.replace("%20", " ")# return the space
     if wheelchair_accessible:
-        print(f"The nearest station from the map is {station_name} and it is wheelchair accessible.")
+        print(f"The nearest station from {place_name} is {station_name} ({description}) and it is wheelchair accessible.")
     else:
-        print(f"The nearest station from the map is {station_name} and it is not wheelchair accessible.")
+        print(f"The nearest station from {place_name} is {station_name} ({description}) and it is not wheelchair accessible.")
 
-
+ 
 if __name__ == '__main__':
     main()

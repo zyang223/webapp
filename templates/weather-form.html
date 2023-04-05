@@ -1,25 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <style>
-        form {
-            border: 1px solid gray;
-            padding: 10px;
+        body {
+            background-color: #f2f2f2;
         }
-
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 18px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        .btn {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0069d9;
+        }
     </style>
 </head>
-
 <body>
-    <form action="" method="post">
-        <label for="">City: <input type="text" name="city"></label>
-        <button>Check Weather</button>
-    </form>
+    <div class="container">
+        <h1>Check the Weather</h1>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="city">Enter City</label>
+                <input type="text" name="city" id="city" placeholder="e.g. London, Paris, New York">
+            </div>
+            <button class="btn" type="submit">Get Weather</button>
+        </form>
+    </div>
 </body>
-
 </html>
+

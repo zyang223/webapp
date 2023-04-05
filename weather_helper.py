@@ -18,7 +18,8 @@ def get_temp(city: str) -> float:
         # print(response_text)
         response_data = json.loads(response_text)
     # pprint.pprint(response_data)
-    return response_data['main']['temp']
+    temperature=response_data['main']['temp']
+    return temperature
 
 
 if __name__ == "__main__":
